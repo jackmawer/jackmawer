@@ -1,1 +1,1 @@
-[![Click here to find out more about me from my website](https://screenshotapi.net/api/v1/screenshot?url=mawersoft.co.uk&width=940&height=422&output=image&delay=1000&ttl=86400&block_ads=true&no_cookie_banners=true)](https://jack.mawersoft.co.uk)
+[![Click here to find out more about me from my website](https://shot.screenshotapi.net/screenshot?&url=https%3A%2F%2Fmawersoft.co.uk&width=940&height=422&output=image&file_type=png&no_cookie_banners=true&omit_background=true&wait_for_event=networkidle)](https://jack.mawersoft.co.uk)
