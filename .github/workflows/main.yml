@@ -1,8 +1,5 @@
 name: Generate Homepage Screenshot
-on:
-  push:
-    branches:
-    - master # Trigger flow when something pushed to master branch
+on: ['workflow_dispatch']
 
 jobs:
   screenshots:
