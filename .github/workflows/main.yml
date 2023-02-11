@@ -1,0 +1,50 @@
+name: Generate Homepage Screenshot
+on: 
+  workflow_dispatch:
+  schedule:
+    # Run monthly at 00:15 (not at midnight to reduce load on GitHub)
+    - cron: '15 0 1 * *'
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: install puppeteer-headful
+      uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
+      env:
+        CI: 'true'
+    - name: Screenshot Website
+      uses: swinton/screenshot-website@v1.x
+      with:
+        source: https://jack.mawer.uk
+        destination: index.png
+        full-page: true
+        default-background: false
+        styles: "['body {background: none}']"
+    - name: Download screenshot from job
+      uses: actions/download-artifact@v3
+      with:
+        name: index
+        path: ./img
+    - name: Move image to correct location
+      run: |
+        ls
+        ls img
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        # Optional. Commit message for the created commit.
+        # Defaults to "Apply automatic changes"
+        commit_message: Update website screenshot
+
+        # Optional glob pattern of files which should be added to the commit
+        # Defaults to all (.)
+        # See the `pathspec`-documentation for git
+        # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
+        # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+        file_pattern: 'img/index.png'
+
+        # Optional. Disable dirty check and always try to create a commit and push
+        skip_dirty_check: true
