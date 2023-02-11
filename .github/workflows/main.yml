@@ -21,6 +21,8 @@ jobs:
         default-background: false
     - name: Move image to correct location
       run: |
+        pwd
+        ls
         mv index.png img/index.png
     - uses: actions/upload-artifact@v2
       with:
