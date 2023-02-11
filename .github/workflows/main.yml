@@ -19,7 +19,7 @@ jobs:
         destination: index.png
         full-page: true
         default-background: false
-        styles: "[body {background: none}]"
+        styles: "['body {background: none}']"
     - name: Download screenshot from job
       uses: actions/download-artifact@v3
       with:
