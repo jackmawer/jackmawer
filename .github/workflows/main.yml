@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
     - name: install puppeteer-headful
       uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
       env:
@@ -14,9 +16,12 @@ jobs:
       uses: swinton/screenshot-website@v1.x
       with:
         source: https://jack.mawer.uk
-        destination: img/index.png
+        destination: index.png
         full-page: true
         default-background: false
+    - name: Move image to correct location
+      run: |
+        mv index.png img/index.png
     - uses: actions/upload-artifact@v2
       with:
         path: screenshots
