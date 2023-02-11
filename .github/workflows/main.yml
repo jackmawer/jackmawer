@@ -1,5 +1,9 @@
 name: Generate Homepage Screenshot
-on: ['workflow_dispatch']
+on: 
+  workflow_dispatch:
+  schedule:
+    # Run monthly at 00:15 (not at midnight to reduce load on GitHub)
+    - cron: '15 0 1 * *'
 
 jobs:
   screenshots:
