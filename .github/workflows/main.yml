@@ -10,13 +10,13 @@ jobs:
       uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
       env:
         CI: 'true'
-    - name: screenshots-ci-action
-      uses: flameddd/screenshots-ci-action@master
+    - name: Screenshot Website
+      uses: swinton/screenshot-website@v1.x
       with:
-        url: https://jack.mawer.uk
-        fullPage: true
-        type: png
-        noCommitHashFileName: true
+        source: https://jack.mawer.uk
+        destination: img/index.png
+        full-page: true
+        default-background: false
     - uses: actions/upload-artifact@v2
       with:
         path: screenshots
