@@ -19,11 +19,15 @@ jobs:
         destination: index.png
         full-page: true
         default-background: false
+    - name: Download screenshot from job
+      uses: actions/download-artifact@v3
+      with:
+        name: index
+        path: ./img
     - name: Move image to correct location
       run: |
-        pwd
         ls
-        mv index.png img/index.png
+        ls img
     - uses: actions/upload-artifact@v2
       with:
         path: screenshots
