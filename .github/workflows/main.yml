@@ -25,7 +25,7 @@ jobs:
         default-background: false
         styles: "['body {background: none}']"
     - name: Download screenshot from job
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4.1.7
       with:
         name: index
         path: ./img
